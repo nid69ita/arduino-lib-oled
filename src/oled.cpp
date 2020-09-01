@@ -899,6 +899,7 @@ size_t OLED::printf(const char *format, ...) {
 }
 */
 
+#if defined(ESP8266) || defined(ESP32)
 size_t OLED::printf(uint_fast8_t x, uint_fast8_t y, const char *format, ...) {
     va_list arg;
     va_start(arg, format);
@@ -924,6 +925,7 @@ size_t OLED::printf(uint_fast8_t x, uint_fast8_t y, const char *format, ...) {
 
     return len;
 }
+#endif
 
 size_t OLED::write(const uint8_t *buffer, size_t len)
 {
@@ -934,27 +936,30 @@ size_t OLED::write(const uint8_t *buffer, size_t len)
     	// If two or more CR are consecutive, both are processed
     	// If two or more LF are consecutive, both are processed
     	if (buffer[ix] == '\r')
-		{
-			Serial.printf("n=%d r",ix);
+		{   Serial.print("n="); Serial.print(ix); Serial.print(" r");
+			//Serial.printf("n=%d r",ix);
     		X=0;
 			Y+=(OLED_FONT_HEIGHT);
 			if (buffer[ix+1] == '\n') {
 				Serial.print(" + n");Serial.println();
 				ix++; // skip char
 			}
-			Serial.printf("n=%d",ix);
+			//Serial.printf("n=%d",ix);
+			Serial.print("n="); Serial.print(ix);
 			Serial.println();
 		}
 		else if (buffer[ix] == '\n')
 		{
-			Serial.printf("n=%d n",ix);
+			//Serial.printf("n=%d n",ix);
+			Serial.print("n="); Serial.print(ix); Serial.print(" n");
 			X=0;
 			Y+=(OLED_FONT_HEIGHT);
 			if (buffer[ix+1] == '\r') {
 				Serial.print(" + r");Serial.println();
 				ix++; // skip char
 			}
-			Serial.printf("n=%d",ix);
+			//Serial.printf("n=%d",ix);
+			Serial.print("n="); Serial.print(ix); 
 			Serial.println();
 		}
 		else if (*(buffer+ix) == '\f')
