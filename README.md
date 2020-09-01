@@ -9,13 +9,14 @@ Update by:
 Author: Fabio Durigon, 2018
 email: develop@dury.it
 ***
+Update by: Noro Igor Diego (nid69):  printf in core only on Esp8266 and Esp32, not present in Avr Core, my update add #ifdef to remove printf for avr core
 
 ## Futures:
  * Supported display sizes: 196x16, 28x32 and 128x64 pixels.
  * The I2C communication is done by software bit-banging the configurable I/O pins.
  * Supports all print() and write() calls as the internal Serial lib of Arduino core
  * Supports also standard C/C++ printf() function
- * Added printf(x,y,...) to print directly at x,y coordinate with one call
+ * Added printf(x,y,...) to print directly at x,y coordinate with one call 
  * Some special characters are handled like in unix mode:
  	'\n' or '\r' -> The cursor is moved to the begin of next line
  	'\r' and '\n' consecutive (also inverted) acts as a single one so -> The cursor is moved to the begin of next line
