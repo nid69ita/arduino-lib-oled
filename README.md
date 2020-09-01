@@ -9,7 +9,8 @@ Update by:
 Author: Fabio Durigon, 2018
 email: develop@dury.it
 ***
-Update by: Noro Igor Diego (nid69):  printf in core only on Esp8266 and Esp32, not present in Avr Core, my update add #ifdef to remove printf for avr core
+Update by: Noro Igor Diego (nid69):  
+  * printf in core library only on Esp8266 and Esp32, not present in Avr Core, my update add #ifdef to remove printf for avr core (so can compile on Uno,Mega,nano,etc.)
 
 ## Futures:
  * Supported display sizes: 196x16, 28x32 and 128x64 pixels.
