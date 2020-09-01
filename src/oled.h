@@ -292,6 +292,7 @@ public:
      */
     void setCursor(uint_fast8_t x, uint_fast8_t y);
 
+#if defined(ESP8266) || defined(ESP32)
     /**
      * Same as printf width x and y coordinate set
      * @param x Pixel position of the upper left corner
@@ -304,6 +305,7 @@ public:
 
     /** Use also Print::printf(const char *format, ...) */
     using Print::printf;
+#endif
 
     /**
      * Set terminal mode on/off
